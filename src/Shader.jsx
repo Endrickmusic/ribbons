@@ -2,9 +2,7 @@ import { OrbitControls } from "@react-three/drei"
 import { useFrame, useThree } from "@react-three/fiber"
 import { useRef, useMemo } from "react"
 
-import vertexShader from "./shader/vertexShader.js"
-import fragmentShader from "./shader/fragmentShader.js"
-import { DoubleSide, Vector2 } from "three"
+import { DoubleSide, Vector3, CatmullRomCurve3, BufferGeometry } from "three"
 
 
 export default function Shader(){
@@ -15,38 +13,39 @@ export default function Shader(){
       let time = state.clock.getElapsedTime()
   
       // start from 20 to skip first 20 seconds ( optional )
-      meshRef.current.material.uniforms.uTime.value = time
+      // meshRef.current.material.uniforms.uTime.value = time
     
     })
-  
-      // Define the shader uniforms with memoization to optimize performance
-      const uniforms = useMemo(
-        () => ({
-          uTime: {
-            type: "f",
-            value: 1.0,
-              },
-          uResolution: {
-            type: "v2",
-            value: new Vector2(4, 3),
-            }
-         }),[]
-      )   
-      const viewport = useThree(state => state.viewport)
+
+  let num = 10
+  let curvePoints = []
+  for (let i = 0; i < num; i++){
+    curvePoints.push(
+      new Vector3(
+        Math.random(),
+        Math.random(),
+        Math.random()
+      )
+    )
+  }
+
+
+  const geometry = useMemo(() => {
+    
+    const curve = new CatmullRomCurve3( curvePoints ) 
+    const points = curve.getPoints( 50 )
+    return new BufferGeometry().setFromPoints(points)
+  }, [])
+
   return (
     <>
       <OrbitControls />    
-      <mesh 
-      ref={meshRef}
-      scale={[viewport.width, viewport.height, 1]}
-      >
-          <planeGeometry args={[1, 1]} />
-          <shaderMaterial
-            uniforms={uniforms}
-            vertexShader={vertexShader}
-            fragmentShader={fragmentShader}
-            side={DoubleSide}
+
+      <line geometry={geometry}>
+          <lineBasicMaterial
+            color={0x0000ff}
+            linewidth={15}
           />
-        </mesh>
+      </line>
    </>
   )}
