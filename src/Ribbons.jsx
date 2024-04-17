@@ -15,8 +15,8 @@ export default function Ribbons(){
 
   imperfections.wrapS = RepeatWrapping
   imperfections.wrapT = RepeatWrapping
-  imperfections.repeat.set(1,1)
-  imperfections.offset.setX(0.5);
+  imperfections.repeat.set(25, 2.5)
+  imperfections.offset.setX(0.25);
 
     // useHelper(lightRef, DirectionalLightHelper, 1, 0xff0000);
 
@@ -36,10 +36,10 @@ export default function Ribbons(){
   
       materials.forEach((m, i)=>{
         m.map.offset.setX(time)
-        m.normalMap.offset.setX(time)
+        m.normalMap.offset.setX(time * 25)
         if(i>0){
           m.map.offset.setX(-time)
-          m.normalMap.offset.setX(time)
+          m.normalMap.offset.setX(25*time)
         }
       })
     
@@ -49,21 +49,21 @@ export default function Ribbons(){
   const { geometry, tempPlane, materials } = useMemo(() => {
 
     let curvePoints = [
-      new Vector3(3, 0, -1),
+      new Vector3(2, 2, 0),
       new Vector3(0.5, 1.5, 0),
-      new Vector3(0, 1, 1),
-      new Vector3(-3, 0.5, 0),
-      new Vector3(-2, 0, -1),
-      new Vector3(-3, -1, 0),
-      new Vector3(0, -1.2, 1),
+      new Vector3(-0.2, -0.6, 0),
+      new Vector3(-3, 1.5, 0),
+      new Vector3(-2, -1, 0),
+      new Vector3(-3, -3, 0),
+      new Vector3(0, -3.2, 0),
     ]  
 
     const curve = new CatmullRomCurve3( curvePoints ) 
     curve.closed = true
-    curve.tension = 0.7
+    curve.tension = 2.1
     curve.curveType = 'catmullrom'
 
-    const points = curve.getPoints( 50 )
+    const points = curve.getPoints( 150 )
 
     const geometry = new BufferGeometry().setFromPoints(points)
 
@@ -83,22 +83,24 @@ export default function Ribbons(){
     const frontMaterial = new MeshStandardMaterial({
       map: frontTexture,
       side: FrontSide,
-      roughness: 0.025,
+      roughness: 0.05,
       metalness: 0.89,
       alphaTest: true,
       flatShading: true,
       normalMap: imperfections,
+      normalMapScale: 0.2,
       envMap: envMap
     })
 
     const backMaterial = new MeshStandardMaterial({
       map: backTexture,
       side: BackSide,
-      roughness: 0.01,
+      roughness: 0.05,
       metalness: 0.89,
       alphaTest: true,
       flatShading: true,
       normalMap: imperfections,
+      normalMapScale: 0.2,
       envMap: envMap
     })
 
@@ -117,7 +119,7 @@ export default function Ribbons(){
       for (let i = 0; i <= number; i++) {
         point = spacedPoints[i] 
         binormalShift.copy(frenetFrames.binormals[i].multiplyScalar(-d))
-        finalPoints.push(new Vector3().copy(point).add(binormalShift).normalize())
+        finalPoints.push(new Vector3().copy(point).add(binormalShift))
       }
     })
   //   console.log(finalPoints)
@@ -168,7 +170,7 @@ export default function Ribbons(){
               <lineBasicMaterial
                 color={0xff0000}
                 linewidth={1}
-                visible={true}
+                visible={false}
               />
           </line>
         </group>
