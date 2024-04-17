@@ -139,6 +139,7 @@ export default function Ribbons(){
       <OrbitControls 
         enableZoom={false}  
         enablePan={false}
+        enableRotate={false}
         autoRotate={true}
         autoRotateSpeed={0.6}
       />  
