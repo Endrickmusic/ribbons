@@ -12,9 +12,11 @@
   "dependencies": {
     "@react-three/drei": "^9.97.0",
     "@react-three/fiber": "^8.15.15",
+    "@react-three/postprocessing": "^2.16.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-script": "^2.0.5",
+    "styled-components": "^6.1.8",
     "three": "^0.160.1"
   },
   "devDependencies": {

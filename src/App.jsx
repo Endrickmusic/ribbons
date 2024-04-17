@@ -1,5 +1,6 @@
 import { Canvas } from '@react-three/fiber'
-import { Environment, useEnvironment } from "@react-three/drei"
+import { Environment } from "@react-three/drei"
+import { EffectComposer, DepthOfField } from '@react-three/postprocessing'
 
 import './index.css'
 import Ribbons from './Ribbons.jsx'
@@ -18,7 +19,12 @@ function App() {
     >
       <color attach="background" args={[0xffffee]} />
 
-      <Environment preset='city' />
+      <Environment 
+      preset='dawn' 
+      background
+      blur={0.00}
+      backgroundIntensity={0.01}
+      />
 
       <Ribbons />
 
@@ -27,6 +33,10 @@ function App() {
       <SilverCube />
 
       <GoldCylinder />
+
+      <EffectComposer disableNormalPass multisampling={10}>
+        <DepthOfField target={[0, 0, 0]} focalLength={0.01} bokehScale={10} height={700} />
+      </EffectComposer>
 
     </Canvas>
   </>

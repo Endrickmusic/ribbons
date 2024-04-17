@@ -49,11 +49,11 @@ export function SilverCube(){
       position={[4.0, -0.5, -5]}
       >
           <boxGeometry
-          args={[7, 7, 7]}
+          args={[2, 2, 28]}
           />
           <meshStandardMaterial 
           color = {'#ffffff'}
-          roughness = {0.2}
+          roughness = {0.09}
           metalness = {1}
           normalMap={imperfections}
       />
