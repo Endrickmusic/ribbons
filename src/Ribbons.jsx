@@ -84,24 +84,26 @@ export default function Ribbons(){
       map: frontTexture,
       side: FrontSide,
       roughness: 0.05,
-      metalness: 0.89,
+      metalness: 0.71,
       alphaTest: true,
       flatShading: true,
       normalMap: imperfections,
       normalMapScale: 0.2,
-      envMap: envMap
+      envMap: envMap,
+      flatShading: false
     })
 
     const backMaterial = new MeshStandardMaterial({
       map: backTexture,
       side: BackSide,
       roughness: 0.05,
-      metalness: 0.89,
+      metalness: 0.71,
       alphaTest: true,
       flatShading: true,
       normalMap: imperfections,
       normalMapScale: 0.2,
-      envMap: envMap
+      envMap: envMap,
+      flatShading: false
     })
 
     const materials = [ frontMaterial, backMaterial ]
