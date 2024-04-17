@@ -23,7 +23,7 @@ export default function Ribbons(){
   [frontTexture, backTexture].forEach(t=>{
       t.wrapS = -1000,
       t.wrapT = -1000,
-      t.repeat.set(-1,-1),
+      t.repeat.set(-1, -1),
       t.offset.setX(0.5)
       alphaTest: true
     })
@@ -49,13 +49,13 @@ export default function Ribbons(){
   const { geometry, tempPlane, materials } = useMemo(() => {
 
     let curvePoints = [
-      new Vector3(-4, 1.7, -2),
-      new Vector3(0, 1.8, 0.5),
-      new Vector3(4, 2.2, -2),
-      new Vector3(7, 0.5, 4),
-      new Vector3(2, -1.8, 2.5),
-      new Vector3(0, -1.6, -2),
-      new Vector3(-4.5, -2.9, 0),
+      new Vector3(-5, 1.7, -3),
+      new Vector3(0, 1.7, 0.5),
+      new Vector3(4, 2.0, -5),
+      new Vector3(5.2, 1.5, 1),
+      new Vector3(2, -1.8, 4.5),
+      new Vector3(0, -1.6, -3),
+      new Vector3(-5.5, -2.9, 0),
     ]  
 
     const curve = new CatmullRomCurve3( curvePoints ) 
@@ -75,7 +75,7 @@ export default function Ribbons(){
     
     let tempPlane = new PlaneGeometry(1, 1, number, 1) 
 
-    let dimensions = [-0.6, 0.6]
+    let dimensions = [-1.1, 1.1]
 
     tempPlane.addGroup(0, 6000, 0)
     tempPlane.addGroup(0, 6000, 1)
