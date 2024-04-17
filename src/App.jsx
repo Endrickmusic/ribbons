@@ -10,10 +10,12 @@ function App() {
 
     <Canvas
     camera={{ 
-      position: [0, 0, 2],
+      position: [0, 0, 5],
       fov: 40 }}  
+    shadows
     >
       <color attach="background" args={[0xffffee]} />
+
       <Ribbons />
     </Canvas>
   </>
