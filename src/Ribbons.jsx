@@ -21,14 +21,14 @@ export default function Ribbons(){
     // useHelper(lightRef, DirectionalLightHelper, 1, 0xff0000);
 
   [frontTexture, backTexture].forEach(t=>{
-      t.wrapS = 1000,
-      t.wrapT = 1000,
-      t.repeat.set(1,1),
+      t.wrapS = -1000,
+      t.wrapT = -1000,
+      t.repeat.set(-1,-1),
       t.offset.setX(0.5)
       alphaTest: true
     })
 
-    backTexture.repeat.set(-1, 1)
+    backTexture.repeat.set(1, -1)
 
     useFrame((state) => {
 
@@ -49,13 +49,13 @@ export default function Ribbons(){
   const { geometry, tempPlane, materials } = useMemo(() => {
 
     let curvePoints = [
-      new Vector3(2, 2, 0),
-      new Vector3(0.5, 1.5, 0),
-      new Vector3(-0.2, -0.6, 0),
-      new Vector3(-3, 1.5, 0),
-      new Vector3(-2, -1, 0),
-      new Vector3(-3, -3, 0),
-      new Vector3(0, -3.2, 0),
+      new Vector3(-4, 1.7, -2),
+      new Vector3(0, 1.8, 0.5),
+      new Vector3(4, 2.2, -2),
+      new Vector3(7, 0.5, 4),
+      new Vector3(2, -1.8, 2.5),
+      new Vector3(0, -1.6, -2),
+      new Vector3(-4.5, -2.9, 0),
     ]  
 
     const curve = new CatmullRomCurve3( curvePoints ) 
