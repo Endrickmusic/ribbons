@@ -36,10 +36,10 @@ export default function Ribbons(){
   
       materials.forEach((m, i)=>{
         m.map.offset.setX(time)
-        m.normalMap.offset.setX(time * 25)
+        m.normalMap.offset.setX(-time * 25)
         if(i>0){
           m.map.offset.setX(-time)
-          m.normalMap.offset.setX(25*time)
+          m.normalMap.offset.setX(-25*time)
         }
       })
     
