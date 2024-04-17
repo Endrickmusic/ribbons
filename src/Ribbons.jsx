@@ -136,7 +136,12 @@ export default function Ribbons(){
 
   return (
     <>
-      <OrbitControls />  
+      <OrbitControls 
+        enableZoom={false}  
+        enablePan={false}
+        autoRotate={true}
+        autoRotateSpeed={0.6}
+      />  
       <ambientLight 
         intensity={.5} />  
       <directionalLight 
