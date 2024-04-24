@@ -1,6 +1,6 @@
 import { Canvas } from '@react-three/fiber'
 import { Environment } from "@react-three/drei"
-import { EffectComposer, DepthOfField } from '@react-three/postprocessing'
+import { EffectComposer, DepthOfField, Selection, Select, Outline } from '@react-three/postprocessing'
 
 import './index.css'
 import Ribbons from './Ribbons.jsx'
@@ -21,12 +21,20 @@ function App() {
 
       <Environment 
       preset='dawn' 
-      //background
+      background
       blur={0.00}
       backgroundIntensity={0.01}
       />
 
       <Ribbons />
+
+      <Selection>
+      
+
+      <EffectComposer disableNormalPass multisampling={10} autoClear={false}>
+        {/* <DepthOfField target={[0, 0, 0]} focalLength={0.01} bokehScale={10} height={700} /> */}
+        <Outline blur visibleEdgeColor="white" edgeStrength={100} width={100} />
+      </EffectComposer>
 
       <TransTorus />
 
@@ -34,10 +42,7 @@ function App() {
 
       <GoldCylinder />
 
-      <EffectComposer disableNormalPass multisampling={10}>
-        <DepthOfField target={[0, 0, 0]} focalLength={0.01} bokehScale={10} height={700} />
-      </EffectComposer>
-
+      </Selection>
     </Canvas>
   </>
   )
