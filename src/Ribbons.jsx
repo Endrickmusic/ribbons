@@ -90,7 +90,7 @@ export default function Ribbons(){
       normalMap: imperfections,
       normalMapScale: 0.2,
       envMap: envMap,
-      flatShading: false
+      // flatShading: false
     })
 
     const backMaterial = new MeshStandardMaterial({
@@ -103,7 +103,7 @@ export default function Ribbons(){
       normalMap: imperfections,
       normalMapScale: 0.2,
       envMap: envMap,
-      flatShading: false
+      // flatShading: false
     })
 
     const materials = [ frontMaterial, backMaterial ]
@@ -150,7 +150,7 @@ export default function Ribbons(){
       <directionalLight 
       position={[0, 0.1, 5]}
       target-position={[0, 0.5, 0]}
-      intensity={8}
+      intensity={1}
       color={0xffffff}
       ref={lightRef}
       />

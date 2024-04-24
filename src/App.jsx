@@ -17,11 +17,11 @@ function App() {
       fov: 40 }}  
     shadows
     >
-      <color attach="background" args={[0xffffee]} />
+      <color attach="background" args={[0xbbbbee]} />
 
       <Environment 
       preset='dawn' 
-      background
+      //background
       blur={0.00}
       backgroundIntensity={0.01}
       />

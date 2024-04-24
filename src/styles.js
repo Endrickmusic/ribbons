@@ -1,8 +1,18 @@
 import styled, { keyframes } from 'styled-components'
 
 export const fade = keyframes`
-  from { opacity: 1; }
-  to { opacity: 0; }
+from {
+  color: #ffff11;
+}
+
+to {
+  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color: white;
+  background: linear-gradient(to right, #2222ff, #ff0000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
 `
 
 export const Container = styled.div`
@@ -19,14 +29,30 @@ export const Container = styled.div`
   }
 `
 
-export const TopLeft = styled.div`
+export const NavBar = styled.div`
   position: absolute;
   top: 5vw;
   left: 5vw;
   color: #ffffff;
   `
 
+  export const TopLeft = styled.div`
+  user-select: none;
+  position: absolute;
+  bottom: 3vw;
+  left: 20%;
+  color: #ffff11;
+  font-size: 15.2vw;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: black;
+
+  &:hover {
+    animation: ${fade} 0.5s forwards;
+  }
+  `
+
 export const BottomLeft = styled.div`
+user-select: none;
   position: absolute;
   bottom: 5vw;
   left: 5vw;
@@ -37,6 +63,7 @@ export const BottomLeft = styled.div`
 `
 
 export const BottomMiddle = styled.div`
+user-select: none;
   position: absolute;
   bottom: 3vw;
   left: 30%;
@@ -46,6 +73,10 @@ export const BottomMiddle = styled.div`
   font-size: 3.2vw;
   -webkit-text-stroke-width: 1.5px;
   -webkit-text-stroke-color: black;
+
+  &:hover {
+    animation: ${fade} 0.5s forwards;
+  }
 `
 
 export const BottomRight = styled.div`
