@@ -138,7 +138,7 @@ export function GoldCylinder(){
     })
 
     const handleClick = () => {
-      navigate('/contact')
+      navigate('/eisenacher')
     }
 
     return(
