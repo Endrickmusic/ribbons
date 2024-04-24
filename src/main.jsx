@@ -14,9 +14,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <>
 
-    <App />
-
     <Router>
+      <App />
       <NavBar />
       <Routes>
             <Route path="/" element={<Overlay />} />

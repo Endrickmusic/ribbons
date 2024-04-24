@@ -1,14 +1,15 @@
 import { useRef, useState, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { MeshTransmissionMaterial, useTexture } from '@react-three/drei'
-
-
+import { useNavigate } from 'react-router-dom'
 
 export function TransTorus(){
 
     const torusRef = useRef()
 
     const [hovered, hover] = useState(null)
+
+    const navigate = useNavigate()
 
     useEffect(() => {
       if (hovered) {
@@ -27,6 +28,10 @@ export function TransTorus(){
       torusRef.current.rotation.y = torusRef.current.rotation.x += delta / 4.5
     })
 
+    const handleClick = () => {
+      navigate('/')
+    }
+
     return(
 
 
@@ -34,6 +39,7 @@ export function TransTorus(){
         ref={torusRef}
         onPointerOver={() => hover(true)} 
         onPointerOut={() => hover(false)}
+        onClick={handleClick}
         scale={0.2}
         position={[0.0, 1.5, 0]}
         >
@@ -62,6 +68,8 @@ export function SilverCube(){
     const imperfections = useTexture('./textures/imperfections.jpg')
     const cubeRef = useRef()
 
+    const navigate = useNavigate()
+
     const [hovered, hover] = useState(null)
 
     useEffect(() => {
@@ -79,11 +87,17 @@ export function SilverCube(){
     useFrame((state, delta) => {
       cubeRef.current.rotation.x = cubeRef.current.rotation.y += delta / 3
     })
+
+    const handleClick = () => {
+      navigate('/about')
+    }
+
     return(
       <mesh
       ref={cubeRef}
       onPointerOver={() => hover(true)} 
       onPointerOut={() => hover(false)}
+      onClick={handleClick}
       scale={0.2}
       position={[4.0, -0.5, -5]}
       >
@@ -106,6 +120,8 @@ export function GoldCylinder(){
 
     const [hovered, hover] = useState(null)
 
+    const navigate = useNavigate()
+
     useEffect(() => {
       if (hovered) {
         cylRef.current.material.color.set('red')
@@ -121,12 +137,17 @@ export function GoldCylinder(){
       cylRef.current.rotation.x = cylRef.current.rotation.y += delta / 3
     })
 
+    const handleClick = () => {
+      navigate('/contact')
+    }
+
     return(
 
       <mesh
       ref={cylRef}
       onPointerOver={() => hover(true)} 
       onPointerOut={() => hover(false)}
+      onClick={handleClick}
       scale={0.2}
       position={[-3.0, 1.5, 4]}
       >
